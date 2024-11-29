@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Safe area utilities */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Custom scrollbar for iOS momentum scrolling */
+@supports (-webkit-overflow-scrolling: touch) {
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Remove tap highlight on iOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better touch scrolling */
+body {
+  overflow-x: hidden;
+  @apply bg-gray-900;
+  height: 100%;
+  height: -webkit-fill-available;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Improved button active states for mobile */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(6, 182, 212, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.3);
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Mobile-first responsive text sizing */
+@media (max-width: 428px) {
+  html {
+    font-size: 16px;
+  }
+  
+  h1 {
+    @apply text-2xl;
+  }
+  
+  h2 {
+    @apply text-xl;
+  }
+  
+  h3 {
+    @apply text-lg;
+  }
+  
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Safe area spacing for modals */
+.modal-safe-bottom {
+  margin-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 428px) {
+  button, 
+  input, 
+  select, 
+  textarea {
+    @apply min-h-[44px];
+  }
+  
+  a {
+    @apply py-2;
+  }
+}
+
+/* Fix for mobile viewport height */
+.min-h-screen {
+  min-height: -webkit-fill-available;
+}
+
+/* Fix for iOS keyboard behavior */
+.ios-keyboard-fix {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+/* Optimize for iPhone 12 Pro Max */
+@media (min-width: 428px) {
+  .container {
+    max-width: 428px;
+  }
+}
+
+/* Prevent content shift when switching orientations */
+@media screen and (orientation: landscape) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
